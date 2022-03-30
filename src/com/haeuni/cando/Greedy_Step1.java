@@ -1,18 +1,16 @@
-package com.company;
+package com.haeuni.cando;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
-public class Main {
+// BOJ 11047
+public class Greedy_Step1 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int coinTypeCnt = sc.nextInt();
         int totalMoney = sc.nextInt();
-        System.out.println(coinTypeCnt + ":" + totalMoney);
+        System.out.println("동전 종류 갯수 " + coinTypeCnt + ":" + "총금액 " + totalMoney);
         int result = 0;
 
         ArrayList<Integer> coinType =  new ArrayList<>(coinTypeCnt);
@@ -23,10 +21,10 @@ public class Main {
             System.out.println(i+ "=" + coinType.get(i));
             if(totalMoney >= coinType.get(i)){
                 int changeCnt = (totalMoney/coinType.get(i));
-                System.out.println("==>" + changeCnt );
+                System.out.println("거스름돈 갯수 ==> " + changeCnt );
                 result += changeCnt;
                 totalMoney -= (coinType.get(i) * changeCnt) ;
-                System.out.println("==>" + totalMoney );
+                System.out.println("나머지 금액 ==> " + totalMoney );
             }
 
         }
