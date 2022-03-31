@@ -26,7 +26,7 @@ public class BinarySearch_Step1 {
 
 
     }
-    public static int binarySearch(int[] arr, int key){
+    private static int binarySearch(int[] arr, int key){
         int start = 0; // 탐색 왼쪽 끝 인덱스
         int end = arr.length - 1; // 탐색 오른쪽 끝 인덱스
 

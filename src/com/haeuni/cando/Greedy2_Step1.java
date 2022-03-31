@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 // BOJ 1931
-public class Greedy_Step2 {
+public class Greedy2_Step1 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int meetingCnt = sc.nextInt();
