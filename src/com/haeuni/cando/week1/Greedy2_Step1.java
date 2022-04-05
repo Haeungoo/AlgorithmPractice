@@ -1,4 +1,4 @@
-package com.haeuni.cando;
+package com.haeuni.cando.week1;
 
 import java.util.Arrays;
 import java.util.Scanner;
