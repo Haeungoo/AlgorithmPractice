@@ -47,6 +47,7 @@ public class Dijkstra_Step1 {
 
         // 시작점에서 다른 정점으로의 최단 경로 구하기
         int[] distance = new int[V+1];
+        // 배열값 일괄 초기화
         Arrays.fill(distance, -1);
         distance[start] = 0; // 시작점 0 표시
 
@@ -66,7 +67,7 @@ public class Dijkstra_Step1 {
         for(int i = 1; i <= V; i++){
             sb.append(distance[i] == -1 ? "INF" : distance[i]).append("\n");
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
 
     }
 }
