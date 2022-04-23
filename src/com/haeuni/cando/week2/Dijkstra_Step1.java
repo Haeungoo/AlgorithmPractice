@@ -59,10 +59,14 @@ public class Dijkstra_Step1 {
             // 이미 방문한 곳은 지나침
             if(distance[to] != -1) continue;
             // 최단 경로 갱신 및 경유 했을 때 가중치 저장
+            System.out.println("start : "+ start + ", to : "+ to + ", weight :" + weight);
             distance[to] = weight;
+            System.out.println("distance 배열 : " + Arrays.toString(distance));
             for(Node n: adj[to]){
+                System.out.println("현재 가중치 : "+ n.weight + " >> " + "추가 가중치 : "+ weight);
                 adj[start].add(new Node(n.to, n.weight+weight));
             }
+            //System.out.println(Arrays.toString(Arrays.stream(adj).toArray()));
         }
         for(int i = 1; i <= V; i++){
             sb.append(distance[i] == -1 ? "INF" : distance[i]).append("\n");
