@@ -11,26 +11,26 @@ public class Hash_Step3 {
         for(int i =0; i< genres.length; i++) {
             hmGenres.put(genres[i], hmGenres.getOrDefault(genres[i],0)+plays[i]);
         }
-        System.out.println(hmGenres);
+        System.out.println("1: " + hmGenres);
         List<String> keySetList = new ArrayList<>(hmGenres.keySet());
         keySetList.sort((o1, o2) -> (hmGenres.get(o2).compareTo(hmGenres.get(o1))));
-        System.out.println(keySetList);
+        System.out.println("2: " + keySetList);
         for(String key : keySetList) {
             HashMap<Integer, Integer> hs = new HashMap<Integer, Integer>();
             for(int i = 0; i<genres.length; i++) {
                 if(key.equals(genres[i])) { hs.put(i, plays[i]); }
             }
-            System.out.println(hs);
+            System.out.println("3: " + hs);
             List<Integer> keyLists = new ArrayList<>(hs.keySet());
             keyLists.sort((s1, s2)->hs.get(s2).compareTo(hs.get(s1)));
-            System.out.println(keyLists);
+            System.out.println("4: " + keyLists);
             int j = 0;
             for (Integer c : keyLists) {
                 if(j>1) { break; }
                 arrAnswer.add(c);
                 j++;
             }
-            System.out.println(arrAnswer);
+            System.out.println("5: " + arrAnswer);
         }
         answer = new int[arrAnswer.size()];
         for( int i =0;i<arrAnswer.size();i++) {
