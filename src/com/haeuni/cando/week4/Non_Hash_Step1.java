@@ -2,6 +2,7 @@ package com.haeuni.cando.week4;
 
 import java.util.Arrays;
 
+// 프로그래머스 - 완주하지 못한 선수
 public class Non_Hash_Step1 {
     private String solution(String[] participant, String[] completion){
         // 미리 sort해서 for문 한번만 돌릴거야

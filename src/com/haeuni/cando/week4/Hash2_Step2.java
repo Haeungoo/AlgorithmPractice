@@ -3,6 +3,7 @@ package com.haeuni.cando.week4;
 import java.util.HashMap;
 import java.util.Iterator;
 
+// 프로그래머스 - 위장
 public class Hash2_Step2 {
     public int solution(String[][] clothes){
         HashMap<String, Integer> map = new HashMap<>();
@@ -15,7 +16,7 @@ public class Hash2_Step2 {
         int answer = 1;
 
         while(it.hasNext()){
-            answer *= it.next().intValue() + 1;
+            answer *= it.next() + 1;
         }
         return answer - 1;
     }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+// 프로그래머스 - 완주하지 못한 선수
 public class Hash_Step1 {
     private String solution(String[] participant, String[] completion){
         String answer = "";

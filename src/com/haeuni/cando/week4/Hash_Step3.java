@@ -2,80 +2,39 @@ package com.haeuni.cando.week4;
 
 import java.util.*;
 
+// 프로그래머스 - 베스트 앨범
 public class Hash_Step3 {
     private int[] solution(String[] genres, int[] plays){
-        // 1. 고유번호와 장르, 고유번호와 플레이수
-        HashMap<Integer, String> gMap = new HashMap<>();
-        HashMap<Integer, Integer> pMap = new HashMap<>();
-        for(int i = 0; i <genres.length; i++){
-            gMap.put(i, genres[i]);
-            pMap.put(i, plays[i]);
+        int[] answer = {};
+        ArrayList<Integer> arrAnswer = new ArrayList<Integer>();
+        HashMap<String, Integer> hmGenres = new HashMap<>();
+        for(int i =0; i< genres.length; i++) {
+            hmGenres.put(genres[i], hmGenres.getOrDefault(genres[i],0)+plays[i]);
         }
-        // 2. HashSet으로 장르 분류 (Set은 중복허용 안됨)
-        HashSet<String> gSet = new HashSet<String>();
-        for(int i = 0; i < genres.length; i++){
-            gSet.add(genres[i]);
-        }
-        // 3. 장르별 총 플레이 회수
-        HashMap<Integer, String> coPlay = new HashMap<Integer, String>();
-        for(String genre : gSet){
-            int cnt = 0;
-            for(int i = 0; i < gMap.size(); i++){
-                if(gMap.get(i).equals(genre)){
-                    cnt += pMap.get(i);
-                }
+        System.out.println(hmGenres);
+        List<String> keySetList = new ArrayList<>(hmGenres.keySet());
+        keySetList.sort((o1, o2) -> (hmGenres.get(o2).compareTo(hmGenres.get(o1))));
+        System.out.println(keySetList);
+        for(String key : keySetList) {
+            HashMap<Integer, Integer> hs = new HashMap<Integer, Integer>();
+            for(int i = 0; i<genres.length; i++) {
+                if(key.equals(genres[i])) { hs.put(i, plays[i]); }
             }
-            coPlay.put(cnt, genre);
-        }
-        // 4. 플레이수 별로 정렬 (키(장르) 값을 기준으로 정렬, TreeMap)
-        TreeMap sort = new TreeMap(coPlay);
-        String[] sortGenre = new String[gSet.size()];
-        int index = 0;
-        for(Object o : sort.keySet()){
-            sortGenre[index] = sort.get(o).toString();
-            index++;
-        }
-        // 5. 장르별 많이 플레이 된 노래의 고유번호 찾기
-        ArrayList<Integer> fIndex = new ArrayList<Integer>();
-        for(int i = sortGenre.length-1; i >= 0; i--){
-            int cnt = 0;
-            for(int p1 : gMap.keySet()){
-                if(sortGenre[i].equals(gMap.get(p1))){
-                    cnt++;
-                }
+            System.out.println(hs);
+            List<Integer> keyLists = new ArrayList<>(hs.keySet());
+            keyLists.sort((s1, s2)->hs.get(s2).compareTo(hs.get(s1)));
+            System.out.println(keyLists);
+            int j = 0;
+            for (Integer c : keyLists) {
+                if(j>1) { break; }
+                arrAnswer.add(c);
+                j++;
             }
-            int[] tmp = new int[cnt];
-            int k = 0;
-            for(int p2 : gMap.keySet()){
-                if(sortGenre[i].equals(gMap.get(p2))){
-                    tmp[k] = pMap.get(p2);
-                    k++;
-                }
-            }
-            if(tmp.length != 1){
-                Arrays.sort(tmp);
-                for(int j = tmp.length-1; j >= tmp.length-2; j--){
-                    for(int p : pMap.keySet()){
-                        if(tmp[j] == pMap.get(p)){
-                            fIndex.add(p);
-                            pMap.put(p,0);
-                            break;
-                        }
-                    }
-                }
-            }else{
-                for(int p : pMap.keySet()){
-                    if(tmp[0] == pMap.get(p)){
-                        fIndex.add(p);
-                        pMap.put(p, 0);
-                        break;
-                    }
-                }
-            }
+            System.out.println(arrAnswer);
         }
-        int[] answer = new int[fIndex.size()];
-        for(int m = 0; m< fIndex.size(); m++){
-            answer[m] = fIndex.get(m);
+        answer = new int[arrAnswer.size()];
+        for( int i =0;i<arrAnswer.size();i++) {
+            answer[i] = arrAnswer.get(i);
         }
         return answer;
     }
