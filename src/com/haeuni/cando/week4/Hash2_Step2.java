@@ -16,7 +16,7 @@ public class Hash2_Step2 {
         int answer = 1;
 
         while(it.hasNext()){
-            answer *= it.next() + 1;
+            answer *= it.next() + 1; // 공집합
         }
         return answer - 1;
     }
